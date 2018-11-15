@@ -2,7 +2,6 @@
 
 const mongoose = require("mongoose");
 
-// this is our schema to represent a blog
 const blogSchema = mongoose.Schema({
   title: { type: String, required: true },
   content: { type: String, required: true },
@@ -12,9 +11,6 @@ const blogSchema = mongoose.Schema({
   },
 });
 
-// this is an *instance method* which will be available on all instances
-// of the model. This method will be used to return an object that only
-// exposes *some* of the fields we want from the underlying data
 blogSchema.methods.serialize = function() {
   return {
     title: this.title,
@@ -24,8 +20,6 @@ blogSchema.methods.serialize = function() {
   };
 };
 
-// note that all instance methods and virtual properties on our
-// schema must be defined *before* we make the call to `.model`.
 const Blog = mongoose.model("Blog", blogSchema);
 
 module.exports = { Blog };
