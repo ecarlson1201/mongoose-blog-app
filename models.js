@@ -39,7 +39,7 @@ blogPostSchema.methods.serialize = function() {
   return {
     id: this._id,
     title: this.title,
-    author: this.authorName,
+    author: this.author,
     content: this.content,
     comments: this.comments
   };
